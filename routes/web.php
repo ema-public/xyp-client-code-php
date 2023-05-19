@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 // Route::post('/service', [HomeController::class, 'callService'])->name('service');
 
-Route::post('/service', 'HomeController@callService')->name('service');
+Route::post('/service', 'HomeController@xypClientSignature')->name('service');
 
 
 // Route::post('/service', [HomeController::class, 'WS100101_getCitizenIDCardInfo'])->name('service');

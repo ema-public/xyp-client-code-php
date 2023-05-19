@@ -5,7 +5,7 @@ namespace App\Http\XypSign;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\File;
 
-class Sign
+class XypSign
 {
     private $keyPath;
     private $accessToken;

@@ -98,7 +98,7 @@
     <script>
 
         function getMessage(serialNumber, signature, time) {
-            console.log('GetMessage: ' + serialNumber + 'Sign: ' + signature);
+            console.log('GetMessage: ' + serialNumber + 'XypSign: ' + signature);
             $('#time').val(time);
             $('#serialNumber').val(serialNumber);
             $('#signature').val(signature);
@@ -165,11 +165,11 @@
                 const binaryString = atob(base64);
                 const length = binaryString.length;
                 const bytes = new Uint8Array(length);
-                
+
                 for (let i = 0; i < length; i++) {
                     bytes[i] = binaryString.charCodeAt(i);
                 }
-                
+
                 return bytes.buffer;
             } catch (error) {
                 console.error('Failed to decode the string:', error);

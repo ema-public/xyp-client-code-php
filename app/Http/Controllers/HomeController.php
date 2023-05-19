@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\XypSign\Sign;
+use App\Http\XypSign\XypSign;
 use SoapClient;
 use Config;
 use Illuminate\Support\Facades\Storage;
@@ -14,23 +14,23 @@ use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
-    public function callService(Request $request)
+    public function xypClientSignature(Request $request)
     {
         if($request['serialNumber'] == null)
-            return response()->json(['error' => 'serialNumber хоосон байна!'], 400); 
+            return response()->json(['error' => 'serialNumber хоосон байна!'], 400);
         else if($request['signature'] == null)
-            return response()->json(['error' => 'signature хоосон байна!'], 400); 
+            return response()->json(['error' => 'signature хоосон байна!'], 400);
         else if($request['time'] == null)
-            return response()->json(['error' => 'timestamp хоосон байна!'], 400); 
+            return response()->json(['error' => 'timestamp хоосон байна!'], 400);
 
         $accessToken = Config::get('app.xypToken');
         $keyPath = Config::get('app.xypKey');
         $regnum = Config::get('app.regnum');
         $timestamp = $request['time'];
-      
-        $signer = new Sign($keyPath, $accessToken, $timestamp);
+
+        $signer = new XypSign($keyPath, $accessToken, $timestamp);
         $signedData = $signer->sign();
-   
+
         try {
             $wsdl = "https://xyp.gov.mn/citizen-1.5.0/ws?WSDL";
             $accessToken = $signedData['accessToken'];
@@ -57,7 +57,7 @@ class HomeController extends Controller
             {
                 dd('Soap error: '.$e);
             }
-            
+
             $soapParam = [
                 "auth" => [
                     "citizen" => [
@@ -80,12 +80,13 @@ class HomeController extends Controller
             $result = $client->WS100101_getCitizenIDCardInfo(['request' => $soapParam]);
             dd($result->return->response);
             // return $result->return->response;
-        } 
+        }
         catch (\Exception $ex) {
             $result = "ХУР -тай холбогдох үед гарсан алдаа:" . $ex->getMessage();
             dd($result);
             // return $result;
         }
     }
+
 
 }
