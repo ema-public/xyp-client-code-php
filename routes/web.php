@@ -20,11 +20,5 @@ Route::get('/', function () {
     return view('index', ['result' => null]);
 });
 
-// Route::post('/service', [HomeController::class, 'callService'])->name('service');
-
 Route::post('/service', 'HomeController@xypClientSignature')->name('service');
 
-
-// Route::post('/service', [HomeController::class, 'WS100101_getCitizenIDCardInfo'])->name('service');
-
-// Route::post('/callService', [ApiController::class, 'callService'])->name('callService');
