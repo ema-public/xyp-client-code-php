@@ -74,10 +74,10 @@
             <div class="content">
                 @csrf
                 <div class="title m-b-md">
-                    Laravel
+                    ХУР CLIENT EXAMPLE
                 </div>
                 <button onclick="otpRequest()" id="otpBtn">Otp Submit</button>
-                <button onclick="webSocket()">Эхлүүлэх</button>
+                <button onclick="webSocket()">Signature submit</button>
                 @if($result != null)
                     <p>Ургийн овог: {{$result->surname}}</p>
                     <p>Овог: {{$result->lastname}}</p>
