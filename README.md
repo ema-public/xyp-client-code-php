@@ -40,7 +40,7 @@ php artisan route:cache
 Иргэнийг тоон гарын үсгээр баталгаажуулан дуудахдаа Signature submit товчийг дарж үргэлжлүүлнэ.
 
 
-##Нэмэлт
+## Нэмэлт
 ХУР сервис дуудаж байгаа кодууд [HomeController.php](./app/Http/Controllers/HomeController.php), [web.php](./routes/web.php) -д байгаа.
 Дэлгэц зурж байгаа кодууд [index.blade.php](./resources/views/index.blade.php) -д байгаа.
 
