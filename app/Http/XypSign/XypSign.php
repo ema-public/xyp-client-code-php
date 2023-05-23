@@ -5,6 +5,12 @@ namespace App\Http\XypSign;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\File;
 
+/**
+ *ХУР системийг ашиглаж буй байгууллага өөрийн тоон гарын үсгийг зурах модуль
+ *
+ * @author buyandelger
+ * @since 2023-05-23
+ */
 class XypSign
 {
     private $keyPath;

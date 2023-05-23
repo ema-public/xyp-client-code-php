@@ -15,6 +15,13 @@ use Carbon\Carbon;
 
 class HomeController extends Controller
 {
+    /**
+     * Тоон гарын үсгээр мэдээлэл баталгаажуулах сервис дуудах
+     * @param Request $request['serialNumber','signature', 'time']
+     *
+     * @author buyandelger
+     * @since 2023-05-23
+     */
     public function xypClientSignature(Request $request)
     {
         if($request['serialNumber'] == null)
@@ -89,6 +96,13 @@ class HomeController extends Controller
         }
     }
 
+    /**
+     * OTP код илгээж буй сервис
+     * @param Request $request
+     *
+     * @author buyandelger
+     * @since 2023-05-23
+     */
     public function otpApprove(Request $request)
     {
         $accessToken = Config::get('app.xypToken');
@@ -97,7 +111,7 @@ class HomeController extends Controller
         $timestamp = Carbon::now()->timestamp;
         $signer = new XypSign($keyPath, $accessToken, $timestamp);
         $signedData = $signer->sign();
-        
+
         try {
             $wsdl = "https://xyp.gov.mn/meta-1.5.0/ws?WSDL";
             $accessToken = $signedData['accessToken'];
@@ -151,8 +165,15 @@ class HomeController extends Controller
         }
     }
 
+    /**
+     * OTP кодоор мэдээлэл баталгаажуулах сервис
+     * @param Request $request
+     *
+     * @author buyandelger
+     * @since 2023-05-23
+     */
     public function xypClientOTP(Request $request)
-    {       
+    {
         if($request['otp'] == null)
             return response()->json(['error' => 'otp хоосон байна!'], 400);
         else if($request['otpSignature'] == null)
@@ -195,7 +216,7 @@ class HomeController extends Controller
                     "citizen" => [
                         "civilId" => "",
                         "regnum" => $regnum,
-                        "fingerprint" => "", 
+                        "fingerprint" => "",
                         "otp"=>$otp
                     ],
                     "operator" => [

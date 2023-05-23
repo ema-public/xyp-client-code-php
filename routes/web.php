@@ -19,8 +19,19 @@ Route::get('/', function () {
     // return view('welcome');
     return view('index', ['result' => null]);
 });
-
+/**
+ *Тоон гарын үсгээр мэдээлэл баталгаажуулах сервис рүү чиглүүлэх
+ *
+ * @author buyandelger
+ * @since 2023-05-23
+ */
 Route::post('/service', 'HomeController@xypClientSignature')->name('service');
+/**
+ *OTP кодоор мэдээлэл баталгаажуулах сервис рүү чиглүүлэх
+ *
+ * @author buyandelger
+ * @since 2023-05-23
+ */
 Route::post('/otp', 'HomeController@otpApprove')->name('otp');
 Route::post('/clientOTP', 'HomeController@xypClientOTP')->name('clientOTP');
 
