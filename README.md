@@ -41,6 +41,6 @@ php artisan route:cache
 
 
 ## Нэмэлт
-ХУР сервис дуудаж байгаа кодууд [HomeController.php](./app/Http/Controllers/HomeController.php), [web.php](./routes/web.php) -д байгаа.
-Дэлгэц зурж байгаа кодууд [index.blade.php](./resources/views/index.blade.php) -д байгаа.
+ХУР сервис дуудаж байгаа кодууд [HomeController.php](./app/Http/Controllers/HomeController.php), [web.php](./routes/web.php),
+дэлгэц зурж байгаа код [index.blade.php](./resources/views/index.blade.php) юм.
 
