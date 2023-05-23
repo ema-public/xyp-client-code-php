@@ -76,6 +76,7 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
+                <button onclick="otpRequest()" id="otpBtn">Otp Submit</button>
                 <button onclick="webSocket()">Эхлүүлэх</button>
                 @if($result != null)
                     <p>Ургийн овог: {{$result->surname}}</p>
@@ -93,7 +94,12 @@
             <input type="hidden" name="signature" id ="signature" value=""/>
             <input type="hidden" name="time" id ="time" value=""/>
         </form>
-
+        <form id="otpForm" action="/clientOTP" method="POST">
+            @csrf
+            <input type="hidden" name="otpSignature" id ="otpSignature" value=""/>
+            <input type="hidden" name="otpTimestamp" id ="otpTimestamp" value=""/>
+            <input type="hidden" name="otp" id ="otp" value=""/>
+        </form>
     </body>
     <script>
 
@@ -104,6 +110,45 @@
             $('#signature').val(signature);
             $('#form').submit();
          }
+
+
+        function otpRequest()
+        {
+            $(document).ready(function() {
+                $("#otpBtn").click(function() {
+                    $.ajax({
+                    url: "{{ route('otp') }}",
+                    type: "POST",
+                    dataType: "json",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log('ResultCode: ' + response.success);
+                        if(response.success == 0)
+                        {
+                            var otp = prompt('OTP кодоо оруулна уу!');
+                            if(otp != null)
+                            {
+                                console.log(response);
+                                $('#otpSignature').val(response.signedData.signature);
+                                $('#otpTimestamp').val(response.timestamp);
+                                $('#otp').val(otp);
+                                $('#otpForm').submit();
+                            }
+                            else
+                                console.log('OTP хоосон байна!');
+                        }
+                        else
+                            console.log(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                    });
+                });
+            });
+        }
 
         function webSocket()
         {

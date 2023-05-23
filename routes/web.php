@@ -21,4 +21,6 @@ Route::get('/', function () {
 });
 
 Route::post('/service', 'HomeController@xypClientSignature')->name('service');
+Route::post('/otp', 'HomeController@otpApprove')->name('otp');
+Route::post('/clientOTP', 'HomeController@xypClientOTP')->name('clientOTP');
 
