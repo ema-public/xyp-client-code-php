@@ -2,8 +2,8 @@
 Төрийн мэдээлэл солилцооны ХУР системийн хэрэглэгчийн жишээ кодыг PHP хэл дээр бэлтгэв.
 
 ## Шаардлага
-    laravel version 11.0.8
-    composer version 3.8.8
+    laravel Framework 7.30.6
+    composer version 2.5.5
     php version ^7.2.5|^8.0
     docker суулгах
 
