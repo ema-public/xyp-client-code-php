@@ -21,6 +21,7 @@ SIGNATURE_HOST = "127.0.0.1:97001"
 ```
 [key.key](./xypKey/key.key) файлд ҮДТ-өөс олгогдсон openVPN key-ийн мэдээллийг хуулна.
 
+ESIGN клиент програм (Win 7, 8, 10 64 бит) [татах](https://ra.datacenter.gov.mn/software/installer).
 ## Ажиллуулах
 ```bash
 docker build --t demo .
