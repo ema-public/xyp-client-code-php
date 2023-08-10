@@ -74,7 +74,8 @@ class HomeController extends Controller
                         "certFingerprint" => $request['serialNumber'],
                         "fingerprint" => "",
                         "signature" => $request['signature'],
-                        "otp"=>""
+                        "otp"=>"",
+                        "authType"=> 2 // 1-OTP, 2-Тоон гарын үсэг, 3-Хурууны хээ
                     ],
                     "operator" => [
                         "fingerprint" => "",
@@ -217,7 +218,8 @@ class HomeController extends Controller
                         "civilId" => "",
                         "regnum" => $regnum,
                         "fingerprint" => "",
-                        "otp"=>$otp
+                        "otp"=>$otp,
+                        "authType"=> 2 // 1-OTP, 2-Тоон гарын үсэг, 3-Хурууны хээ
                     ],
                     "operator" => [
                         "fingerprint" => "",
